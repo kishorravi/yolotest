@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the image
-image = cv2.imread("path/to/your/image.jpg")  # Replace with the path to your image
+x
+image = cv2.imread("https://github.com/kishorravi/yolotest/blob/master/cow.jpg")  # Replace with the path to your image
 
 # Get image dimensions
 height, width, _ = image.shape
