@@ -8,13 +8,13 @@ height, width, _ = image.shape  # Added to get height and width of the image
 new_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 plt.imshow(new_image)
 
-yolo = cv2.dnn.readNet("/content/yolov3-tiny.weights", "/content/yolov3-tiny.cfg")
+yolo = cv2.dnn.readNet("/content/yolov5s.onnx")  # Use the path to the YOLOv5 ONNX file
 
 classes = []
 with open("/content/coco.names", 'r') as f:
     classes = f.read().splitlines()
 
-blob = cv2.dnn.blobFromImage(image, 1 / 255, (416, 416), (0, 0, 0), swapRB=True, crop=False)
+blob = cv2.dnn.blobFromImage(image, 1 / 255, (640, 640), (0, 0, 0), swapRB=True, crop=False)
 yolo.setInput(blob)
 output_layer_name = yolo.getUnconnectedOutLayersNames()
 layer_output = yolo.forward(output_layer_name)
@@ -58,4 +58,3 @@ for i in indexes_array:
 
 plt.imshow(new_image)
 plt.show()
-boxes
